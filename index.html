@@ -1,0 +1,40 @@
+<html>
+<head>
+    <title>EDNA suggestor</title>
+    <link rel="stylesheet" type="text/css" href="./index.css">
+    <link rel="shortcut icon" type="image/ico"
+          href="https://raw.githubusercontent.com/POSOCO/ednasuggest/gh-pages/favicon.ico"/>
+</head>
+<body>
+<div class="wrapper">
+    <h2>Upload the logic files</h2>
+    <input type="file" id="logicFilesInput" multiple></td>
+    <br><br>
+    <button id="addLogicFilesButton" onclick="addLogicFiles()">Add the files</button>
+    <button id="clearLogicFilesButton" onclick="clearLogicFiles()">Clear the files</button>
+    <br><br>
+    <button id="createFunctionsButton" onclick="createFunctions()">Create Functions</button>
+    <button id="startRunningLogicsButton" onclick="startMonitoring()">Start Monitoring</button>
+    <button id="stopRunningLogicsButton" onclick="pauseMonitoring()">Stop Monitoring</button>
+    <br><br>
+
+    <div class="hidingClass">
+        <div id="console_" style="border: 1px solid black;width: 95%;height: 300px;overflow: auto;">
+        </div>
+        <button onclick="clearConsole()">Clear Text Area</button>
+    </div>
+    <div class="push"></div>
+</div>
+<div id="footer" class="footer"
+     style='background-color:#217346;color:#EEEEEE;width:100%;padding-left:1em;'>
+    <span>The Code for this WebApp is hosted at </span><a
+        href="https://github.com/POSOCO/ednasuggest/blob/gh-pages/index.js"
+        style="color:#dddddd;" target="_blank">https://github.com/POSOCO/ednasuggest/blob/gh-pages/index.js</a>
+</div>
+<script src="./libs/js/jquery.min.js"></script>
+<script src="./libs/js/consoleFunctions.js"></script>
+<script src="./logicsHolder.js"></script>
+<script src="./index.js"></script>
+<script src="./logicPlayer.js"></script>
+</body>
+</html>
