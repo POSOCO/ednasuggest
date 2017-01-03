@@ -10,12 +10,13 @@
     <h2>Upload the logic files</h2>
     <input type="file" id="logicFilesInput" multiple></td>
     <br><br>
-    <button id="addLogicFilesButton" onclick="addLogicFiles()">Add the files</button>
-    <button id="clearLogicFilesButton" onclick="clearLogicFiles()">Clear the files</button>
+    <button id="addLogicFilesButton" onclick="addLogicFiles()">Add Logic files</button>
+    <button id="clearLogicFilesButton" onclick="clearLogicFiles()">Clear Logic files</button>
     <br><br>
     <button id="createFunctionsButton" onclick="createFunctions()">Create Functions</button>
+    <br><br>
     <button id="startRunningLogicsButton" onclick="startMonitoring()">Start Monitoring</button>
-    <button id="stopRunningLogicsButton" onclick="pauseMonitoring()">Stop Monitoring</button>
+    <button id="stopRunningLogicsButton" onclick="pauseMonitoring()">Pause Monitoring</button>
     <br><br>
 
     <div class="hidingClass">
@@ -23,6 +24,19 @@
         </div>
         <button onclick="clearConsole()">Clear Text Area</button>
     </div>
+
+    <div>
+        <h3 style="margin-bottom: 0">Instructions</h3>
+        <ol style="margin-top: 5px">
+            <li>Click the choose files button and then upload the monitoring logic files</li>
+            <li>Click Add logic files button</li>
+            <li>Click Create functions button</li>
+            <li>Click Start monitoring button to start getting suggestions from the app</li>
+            <li>Click Stop monitoring button to stop suggestions from the app</li>
+            <li>Click Clear logic files button to clear the existing monitoring logics</li>
+        </ol>
+    </div>
+
     <div class="push"></div>
 </div>
 <div id="footer" class="footer"

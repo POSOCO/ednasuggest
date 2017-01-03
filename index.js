@@ -10,5 +10,6 @@ function addLogicFiles() {
 
 function clearLogicFiles() {
     logic_holder.resetAndCreateArrays();
+    logic_holder.functionsArray = [];
     document.getElementById("logicFilesInput").value = "";
 }
