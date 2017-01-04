@@ -35,7 +35,7 @@ function doStyling(style, tag, fontSize) {
     } else if (tag == 'info') {
         style.color = 'blue';
     } else if (tag == 'success') {
-        style.color = 'blue';
+        style.color = '#0F9200';
     }
 }
 

@@ -20,7 +20,7 @@ var providerObject = {
     }
 };
 
-var providerObjectTemp = {
+var providerObjectForTest = {
     "eDNARealPointFetcher": function (pointsArray, done) {
         done(null, pointsArray);
     }
@@ -36,11 +36,20 @@ function createFunctions() {
 }
 
 function executeFunctions() {
+    handleConsoleHeight();
     var functionObjects = logic_holder.functionsArray;
     for (var i = 0; i < functionObjects.length; i++) {
         // create function objects from the texts
-        functionObjects[i](providerObject, function (suggestion) {
-            WriteLineConsole(suggestion);
+        functionObjects[i](providerObjectForTest, function (suggestionObjectsArray) {
+            if (typeof suggestionObjectsArray == "string") {
+                WriteLineConsole(suggestionObjectsArray);
+                console_watcher.increment_by(1);
+            } else {
+                for (var k = 0; k < suggestionObjectsArray.length; k++) {
+                    WriteLineConsole(suggestionObjectsArray[k]["suggestionStr"], suggestionObjectsArray[k]["tag"]);
+                    console_watcher.increment_by(1);
+                }
+            }
         });
     }
 }
@@ -59,4 +68,11 @@ function startMonitoring() {
 function pauseMonitoring() {
     console.log("Pausing logic monitoring", "info");
     clearInterval(timingVar_);
+}
+
+function handleConsoleHeight() {
+    if (console_watcher.count > 150) {
+        clearConsole();
+        console_watcher.set_count(0);
+    }
 }

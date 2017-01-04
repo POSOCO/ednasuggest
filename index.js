@@ -1,4 +1,5 @@
 var logic_holder = new LogicsHolder();
+var console_watcher = new consoleWatcher();
 
 function addLogicFiles() {
     var fileInput = document.getElementById("logicFilesInput");

@@ -1,7 +1,0 @@
-(function (provider, done) {
-     provider.eDNARealPointFetcher([1, 4, 8, 16], function (err, resultsArray) {
-         done(resultsArray.map(function(x){
-              return x * x * x;
-            }));
-     });
- })
