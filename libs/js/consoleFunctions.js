@@ -17,16 +17,16 @@ function WriteLineConsole(str, tag) {
             + currentdate.getSeconds();
         var node = document.createTextNode(datetime + " : " + str);
         para.appendChild(node);
-        mConsole.appendChild(para);
-        //mConsole.insertBefore(para, mConsole.firstChild);
-        doStyling(para.style, tag, "small");
+        //mConsole.appendChild(para);
+        mConsole.insertBefore(para, mConsole.firstChild);
+        doStyling(para.style, tag, null);
     }
 }
 
 //Console Functions
 function doStyling(style, tag, fontSize) {
     style.display = 'block';
-    style.fontSize = fontSize ? fontSize : "0.8em";
+    style.fontSize = fontSize ? fontSize : "0.9em";
     style.fontFamily = "Courier New";
     if (tag == 'error') {
         style.color = 'red';
