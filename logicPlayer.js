@@ -1,4 +1,4 @@
-var providerObjectTemp = {
+var providerObject = {
     "eDNARealPointFetcher": function (pointsArray, done) {
         var resultsArray = [];
         for (var i = 0; i < pointsArray.length; i++) {
@@ -6,22 +6,21 @@ var providerObjectTemp = {
         }
         for (var i = 0; i < pointsArray.length; i++) {
             $.get("http://localhost:62448/api/values/real?pnt=" + pointsArray[i], (function (iterInput) {
-                var iter = iterInput;
                 return function (data, status) {
                     if (status == "success") {
-                        resultsArray[i] = data;
+                        resultsArray[iterInput] = data;
                     }
                 }
             })(i));
         }
-        // All the requests have been sent. Wait for 500 msec and send the result to the callback function
+        // All the requests have been sent. Wait for 2500 msec and send the result to the callback function
         setInterval(function () {
             done(null, resultsArray);
-        }, 500);
+        }, 2500);
     }
 };
 
-var providerObject = {
+var providerObjectTemp = {
     "eDNARealPointFetcher": function (pointsArray, done) {
         done(null, pointsArray);
     }
@@ -38,7 +37,6 @@ function createFunctions() {
 
 function executeFunctions() {
     var functionObjects = logic_holder.functionsArray;
-    clearConsole();
     for (var i = 0; i < functionObjects.length; i++) {
         // create function objects from the texts
         functionObjects[i](providerObject, function (suggestion) {
@@ -54,7 +52,7 @@ var timingVar_;
 function startMonitoring() {
     pauseMonitoring();
     console.log("Starting logic monitoring", "info");
-    timingVar_ = setInterval(executeFunctions, 1000);
+    timingVar_ = setInterval(executeFunctions, 3000);
 }
 
 //Timing function
