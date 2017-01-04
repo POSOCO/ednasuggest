@@ -1,6 +1,6 @@
 (function (provider, done) {
-    var indoreReactorFlowPoint = 10;
-    var indoreBusVoltagePoint = 759;
+    var indoreReactorFlowPoint = "WRLDCMP.SCADA1.A0001682";
+    var indoreBusVoltagePoint = "WRLDCMP.SCADA1.A0001653";
     provider.eDNARealPointFetcher([indoreBusVoltagePoint, indoreReactorFlowPoint], function (err, resultsArray) {
         if (err) {
             done(null);
