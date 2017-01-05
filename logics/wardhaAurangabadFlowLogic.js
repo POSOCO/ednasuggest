@@ -1,22 +1,32 @@
 (function (provider, done) {
     /* points input */
     var line_flow_Akola_Aurangabad_MW_pnt = "WRLDCMP.SCADA1.A0001682";
+    var line_flow_Akola_Aurangabad_2_MW_pnt = "WRLDCMP.SCADA1.A0001682";
     var line_flow_Wardha_Aurangabad_MW_pnt = "WRLDCMP.SCADA1.A0001684";
+    var line_flow_Wardha_Aurangabad_2_MW_pnt = "WRLDCMP.SCADA1.A0001684";
+    var line_flow_Wardha_Aurangabad_3_MW_pnt = "WRLDCMP.SCADA1.A0001684";
+    var line_flow_Wardha_Aurangabad_4_MW_pnt = "WRLDCMP.SCADA1.A0001684";
     var voltage_of_Aurangabad_KV_pnt = "WRLDCMP.SCADA1.A0001653";
     var line_flow_Wardha_Parli_MW_pnt = "WRLDCMP.SCADA1.A0001682";
     var voltage_Parli_KV_pnt = "WRLDCMP.SCADA1.A0001682";
-    provider.eDNARealPointFetcher([line_flow_Akola_Aurangabad_MW_pnt, line_flow_Wardha_Aurangabad_MW_pnt, voltage_of_Aurangabad_KV_pnt, line_flow_Wardha_Parli_MW_pnt, voltage_Parli_KV_pnt], function (err, resultsArray) {
+    provider.eDNARealPointFetcher([line_flow_Akola_Aurangabad_MW_pnt, line_flow_Akola_Aurangabad_2_MW_pnt, line_flow_Wardha_Aurangabad_MW_pnt, line_flow_Wardha_Aurangabad_2_MW_pnt, line_flow_Wardha_Aurangabad_3_MW_pnt, line_flow_Wardha_Aurangabad_4_MW_pnt, voltage_of_Aurangabad_KV_pnt, line_flow_Wardha_Parli_MW_pnt, voltage_Parli_KV_pnt], function (err, resultsArray) {
         if (err) {
             done(null);
         }
         try {
             /* logic start */
             var line_flow_Akola_Aurangabad_MW = resultsArray[0].dval;
-            var line_flow_Wardha_Aurangabad_MW = resultsArray[1].dval;
-            var voltage_of_Aurangabad_KV = resultsArray[2].dval;
-            var line_flow_Wardha_Parli_MW = resultsArray[3].dval;
-            var voltage_Parli_KV = resultsArray[4].dval;
+            var line_flow_Akola_Aurangabad_2_MW = resultsArray[1].dval;
+            var line_flow_Wardha_Aurangabad_MW = resultsArray[2].dval;
+            var line_flow_Wardha_Aurangabad_2_MW = resultsArray[3].dval;
+            var line_flow_Wardha_Aurangabad_3_MW = resultsArray[4].dval;
+            var line_flow_Wardha_Aurangabad_4_MW = resultsArray[5].dval;
+            var voltage_of_Aurangabad_KV = resultsArray[6].dval;
+            var line_flow_Wardha_Parli_MW = resultsArray[7].dval;
+            var voltage_Parli_KV = resultsArray[8].dval;
 
+            var max_line_flow_Akola_Aurangabad_MW = Math.max(line_flow_Akola_Aurangabad_MW, line_flow_Akola_Aurangabad_2_MW);
+            var max_line_flow_Wardha_Aurangabad_MW = Math.max(line_flow_Wardha_Aurangabad_MW, line_flow_Wardha_Aurangabad_2_MW, line_flow_Wardha_Aurangabad_3_MW, line_flow_Wardha_Aurangabad_4_MW);
             var suggestionsArray_ = [];
             var resultantSuggestionsArray_ = [];
             var suggest = function (str) {
@@ -26,13 +36,13 @@
             };
 
             // Execute the algorithm
-            if (line_flow_Akola_Aurangabad_MW >= 600) {
+            if (max_line_flow_Akola_Aurangabad_MW >= 600) {
                 suggest("Increase Koyna generation");
                 suggest("Open one Aurangabad Pune line");
                 suggest("Take Bableshwar Ektuni both lines into service");
                 suggest("Reduce Mouda, Tirora, Koradi generation, infirm first");
             }
-            if (line_flow_Wardha_Aurangabad_MW >= 1500) {
+            if (max_line_flow_Wardha_Aurangabad_MW >= 1500) {
                 suggest("Increase Koyna generation");
                 suggest("Take Bableshwar Ektuni both lines into service");
                 suggest("Reduce Mouda, Tirora, Koradi generation, infirm first");
