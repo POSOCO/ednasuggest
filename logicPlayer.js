@@ -14,7 +14,7 @@ var providerObject = {
             })(i));
         }
         // All the requests have been sent. Wait for 2500 msec and send the result to the callback function
-        setInterval(function () {
+        setTimeout(function () {
             done(null, resultsArray);
         }, 2500);
     }
