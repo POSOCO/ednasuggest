@@ -48,9 +48,6 @@
             if (voltage_Parli_KV <= 395) {
                 suggest("Switch off Bus Reactors at Parli");
             }
-            if (suggestionsArray_.length == 0) {
-                suggest("Be Alert...");
-            }
             for (var i = 0; i < suggestionsArray_.length; i++) {
                 resultantSuggestionsArray_[i] = {suggestionStr: suggestionsArray_[i]};
             }
